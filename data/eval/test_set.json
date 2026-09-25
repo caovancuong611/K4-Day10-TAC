@@ -1,0 +1,53 @@
+[
+  {
+    "id": "eval_001",
+    "type": "summary",
+    "question_type": "summary",
+    "question": "What is the main research contribution of 'Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks'?",
+    "ground_truth": "Retrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages.",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671801"
+    ]
+  },
+  {
+    "id": "eval_002",
+    "type": "authors",
+    "question_type": "authors",
+    "question": "Who authored the study 'Data Observability and Quality Gates for Production RAG Systems'?",
+    "ground_truth": "Anh Tran, Quoc Pham",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671802"
+    ]
+  },
+  {
+    "id": "eval_003",
+    "type": "date",
+    "question_type": "date",
+    "question": "When was the study 'Mitigating Ghost Vectors in Dense Retrieval via Idempotent Indexing' published?",
+    "ground_truth": "2026-04-18",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671803"
+    ]
+  },
+  {
+    "id": "eval_004",
+    "type": "category",
+    "question_type": "category",
+    "question": "What categories describe the paper 'Freshness SLAs for Real-Time LLM Knowledge Augmentation'?",
+    "ground_truth": "Data Management, Artificial Intelligence",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671804"
+    ]
+  },
+  {
+    "id": "eval_005",
+    "type": "multi_hop",
+    "question_type": "multi_hop",
+    "question": "Combine the findings of 'Evaluating Retrieval Precision with Token F1 and LLM Judges' and 'Semantic Layer Integration for Agentic Text-to-SQL Pipelines'. What does each study contribute?",
+    "ground_truth": "Evaluating Retrieval Precision with Token F1 and LLM Judges: Evaluating open-domain QA requires robust metrics. Semantic Layer Integration for Agentic Text-to-SQL Pipelines: Connecting LLMs directly to raw warehouse tables often results in schema misunderstandings.",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671805",
+      "10.1145/3637528.3671806"
+    ]
+  }
+]

@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-09-25T08:53:20.624175+00:00",
+  "input_rows": 24,
+  "output_rows": 24,
+  "scenario_count": 6,
+  "actions": [
+    {
+      "scenario": "drop_latest_records",
+      "affected_count": 5,
+      "paper_ids": [
+        "10.1145/3637528.3671812",
+        "10.1145/3637528.3671808",
+        "10.1145/3637528.3671804",
+        "10.1145/3637528.3671807",
+        "10.1145/3637528.3671802"
+      ],
+      "details": "Removed the newest 20% of papers."
+    },
+    {
+      "scenario": "blank_summary",
+      "affected_count": 3,
+      "paper_ids": [
+        "10.1145/3637528.3671801",
+        "10.1145/3637528.3671805",
+        "10.1145/3637528.3671809"
+      ],
+      "details": "Replaced summaries with empty strings."
+    },
+    {
+      "scenario": "truncate_title",
+      "affected_count": 3,
+      "paper_ids": [
+        "10.1145/3637528.3671806",
+        "10.1145/3637528.3671810",
+        "10.1145/3637528.3671813"
+      ],
+      "details": "Truncated titles to at most 7 characters."
+    },
+    {
+      "scenario": "stale_date",
+      "affected_count": 7,
+      "paper_ids": [
+        "10.1145/3637528.3671801",
+        "10.1145/3637528.3671803",
+        "10.1145/3637528.3671805",
+        "10.1145/3637528.3671806",
+        "10.1145/3637528.3671809",
+        "10.1145/3637528.3671810",
+        "10.1145/3637528.3671811"
+      ],
+      "details": "Shifted publication dates five years into the past."
+    },
+    {
+      "scenario": "inject_text_noise",
+      "affected_count": 3,
+      "paper_ids": [
+        "10.1145/3637528.3671801",
+        "10.1145/3637528.3671805",
+        "10.1145/3637528.3671806"
+      ],
+      "details": "Appended repeated meaningless tokens to embedding text."
+    },
+    {
+      "scenario": "duplicate_rows",
+      "affected_count": 5,
+      "paper_ids": [
+        "10.1145/3637528.3671824",
+        "10.1145/3637528.3671823",
+        "10.1145/3637528.3671822",
+        "10.1145/3637528.3671821",
+        "10.1145/3637528.3671810"
+      ],
+      "details": "Appended exact duplicate rows to restore the original row count."
+    }
+  ]
+}
