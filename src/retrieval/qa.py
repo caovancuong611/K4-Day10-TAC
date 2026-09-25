@@ -24,27 +24,36 @@ def _extract_answer(question: str, top_result: SearchResult) -> str:
         return metadata["authors_joined"]
     if "when was" in lowered or "publication date" in lowered or "published on" in lowered:
         return metadata["published"]
-    if "what categories" in lowered:
+    if "what categories" in lowered or "what category" in lowered:
         return metadata["categories_joined"]
     return first_sentence(metadata["summary"])
 
 
 def answer_question(question: str, settings: Settings, index: LocalEmbeddingIndex, top_k: int | None = None) -> AnswerResult:
-    title_match = re.search(r"'([^']+)'", question)
-    exact = index.lookup(title_match.group(1)) if title_match else None
+    title_matches = re.findall(r"'([^']+)'", question)
+    exact_matches = [match for title in title_matches if (match := index.lookup(title))]
     retrieved = index.search(question, top_k=top_k)
-    if exact:
-        exact_result = SearchResult(
+    exact_results = [
+        SearchResult(
             paper_id=exact["paper_id"],
             title=exact["title"],
             score=1.0,
             content=exact["content"],
             metadata=exact["metadata"],
         )
-        deduped = [exact_result] + [item for item in retrieved if item.paper_id != exact_result.paper_id]
+        for exact in exact_matches
+    ]
+    if exact_results:
+        exact_ids = {item.paper_id for item in exact_results}
+        deduped = exact_results + [item for item in retrieved if item.paper_id not in exact_ids]
         retrieved = deduped[: (top_k or settings.top_k)]
     if not retrieved:
         answer = "I don't know from the indexed corpus."
+    elif "combine the findings" in question.lower() and len(exact_results) >= 2:
+        answer = " ".join(
+            f"{item.title}: {first_sentence(item.metadata['summary'])}"
+            for item in exact_results[:2]
+        )
     else:
         answer = _extract_answer(question, retrieved[0])
     return AnswerResult(
